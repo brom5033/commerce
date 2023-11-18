@@ -12,13 +12,15 @@
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.14.18",
     "@mui/material": "^5.14.18",
     "@stackflow/core": "^1.0.8",
     "@stackflow/plugin-basic-ui": "^1.4.0",
     "@stackflow/plugin-renderer-basic": "^1.1.5",
     "@stackflow/react": "^1.1.5",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "vite-tsconfig-paths": "^4.2.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^18.4.2",
