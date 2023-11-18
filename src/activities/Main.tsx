@@ -1,11 +1,16 @@
+import { useEffect } from 'react';
 import { type ActivityComponentType } from '@stackflow/react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper/modules';
-
 // component
 import { AppScreen } from '@components/index';
 
 export const Main: ActivityComponentType = () => {
+    useEffect(() => {
+        fetch('/people')
+            .then((res) => res.json())
+            .then((data) => console.log(data));
+    }, []);
     return (
         <AppScreen main>
             main page
