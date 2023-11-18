@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { App } from './App.tsx';
-// css;
+// css
 import '@stackflow/plugin-basic-ui/index.css';
 import { CssBaseline, GlobalStyles } from '@mui/material';
 import 'swiper/css';
@@ -19,7 +18,6 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                 },
             }}
         />
-        <App />
         <Stack />
     </React.StrictMode>,
 );
