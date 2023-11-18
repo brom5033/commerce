@@ -29,9 +29,6 @@ export const Main: ActivityComponentType = () => {
                 <SwiperSlide>
                     <img src="/images/slider4.jpg" alt="" height="400px" />
                 </SwiperSlide>
-                <SwiperSlide>
-                    <img src="/images/slider5.jpg" alt="" height="400px" />
-                </SwiperSlide>
             </Swiper>
         </AppScreen>
     );
