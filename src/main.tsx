@@ -4,6 +4,8 @@ import { App } from './App.tsx';
 // css;
 import '@stackflow/plugin-basic-ui/index.css';
 import { CssBaseline, GlobalStyles } from '@mui/material';
+import 'swiper/css';
+import 'swiper/css/pagination';
 // stackflow
 import { Stack } from 'stackflow';
 
