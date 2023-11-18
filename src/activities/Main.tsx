@@ -1,40 +1,13 @@
-import { useEffect } from 'react';
-import { type ActivityComponentType } from '@stackflow/react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, Autoplay } from 'swiper/modules';
+import type { ActivityComponentType } from '@stackflow/react';
+
 // component
 import { AppScreen } from '@components/index';
+import { MainTemplate } from '@components/templates/Main';
 
 export const Main: ActivityComponentType = () => {
-    useEffect(() => {
-        fetch('/people')
-            .then((res) => res.json())
-            .then((data) => console.log(data));
-    }, []);
     return (
         <AppScreen main>
-            main page
-            <Swiper
-                style={{ height: '400px', width: '300px' }}
-                slidesPerView={1}
-                spaceBetween={20}
-                modules={[Pagination, Autoplay]}
-                pagination={{ clickable: true }}
-                autoplay={{ delay: 2000, disableOnInteraction: false }}
-            >
-                <SwiperSlide>
-                    <img src="/images/slider1.jpg" alt="" height="400px" />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img src="/images/slider2.jpg" alt="" height="400px" />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img src="/images/slider3.jpg" alt="" height="400px" />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img src="/images/slider4.jpg" alt="" height="400px" />
-                </SwiperSlide>
-            </Swiper>
+            <MainTemplate />
         </AppScreen>
     );
 };
