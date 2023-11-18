@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import { useFlow } from 'stackflow';
-import { Container, Grid } from '@mui/material';
+import { Container, Grid, Avatar, Typography } from '@mui/material';
 // component
 import { Logo } from '@components/index';
 import { DrawerAppBar } from '@components/molecules/DrawerAppBar';
@@ -36,6 +36,12 @@ export const AppBar: FC = () => {
                 <Grid item sx={{ cursor: 'pointer', fontWeight: 'bold', margin: 'auto' }}>
                     <Logo onClick={MainPageNavigation} />
                 </Grid>
+                <Grid item >
+                    <Avatar alt="profile" src="/images/dog.jpg" />
+                </Grid>
+                <Grid item sx={{ml:'10px'}}>
+                        <Typography sx={{ mt:'8px'}}>박민정</Typography>
+                    </Grid>
             </Grid>
         </Container>
     );
