@@ -1,8 +1,7 @@
 import { type FC, type ChangeEvent, useState } from 'react';
 import { Stack } from '@mui/material';
 // component
-import { Box } from '@components/atoms/Box';
-import { Input } from '@components/atoms/Input';
+import { Box, Input, Button } from '@components/atoms/';
 import { checkMessage } from '@constants/checkMessage';
 
 type CheckType = null | 1 | 2 | 3 | 4 | 5 | 6;
@@ -41,7 +40,7 @@ export const SignUpTemplate: FC = () => {
         setCheck(checkObj);
 
         const emailCheck =
-            /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            /^(([^<>()\\[\]\\.,;:\s@"]+(\.[^<>()\\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
         if (!emailCheck.test(event.target.value)) {
             checkObj.email = 1;
@@ -150,6 +149,7 @@ export const SignUpTemplate: FC = () => {
                     helperText={checkMessage.businessNumber[check.businessNumber ?? 0] ?? ''}
                 />
             </Box>
+            <Button>회원가입</Button>
         </Stack>
     );
 };
