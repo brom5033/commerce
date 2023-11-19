@@ -4,7 +4,6 @@ import { Stack } from '@mui/material';
 import { useFlow } from 'stackflow';
 // component
 import { Box, Input, Button } from '@components/atoms';
-import { AppScreen } from '@components/organisms';
 import { useLogin } from '@hooks/api';
 import { checkMessage } from '@constants/index';
 
@@ -74,42 +73,40 @@ export const LoginPage: FC = () => {
     };
 
     return (
-        <AppScreen main>
-            <Stack
-                gap="50px"
-                sx={{
-                    width: '100%',
-                    maxWidth: '500px',
-                    margin: 'auto',
-                    top: '50%',
-                    left: '50%',
-                    position: 'absolute',
-                    transform: 'translate(-50%, -50%)',
-                }}
-            >
-                <Stack gap="50px">
-                    <Box>
-                        <h3>Login</h3>
-                        <Input
-                            onChange={handleEmailChange}
-                            onKeyDown={handleOnKeyDown}
-                            ref={emailRef}
-                            type="email"
-                            label="이메일"
-                            helperText={checkMessage.email[check.email ?? 0] ?? ''}
-                        />
-                        <Input
-                            onChange={handlePasswordChange}
-                            onKeyDown={handleOnKeyDown}
-                            ref={passwordRef}
-                            type="password"
-                            label="비밀번호"
-                            helperText={checkMessage.password[check.password ?? 0] ?? ''}
-                        />
-                    </Box>
-                </Stack>
-                <Button onClick={submit}>로그인</Button>
+        <Stack
+            gap="50px"
+            sx={{
+                width: '100%',
+                maxWidth: '500px',
+                margin: 'auto',
+                top: '50%',
+                left: '50%',
+                position: 'absolute',
+                transform: 'translate(-50%, -50%)',
+            }}
+        >
+            <Stack gap="50px">
+                <Box>
+                    <h3>Login</h3>
+                    <Input
+                        onChange={handleEmailChange}
+                        onKeyDown={handleOnKeyDown}
+                        ref={emailRef}
+                        type="email"
+                        label="이메일"
+                        helperText={checkMessage.email[check.email ?? 0] ?? ''}
+                    />
+                    <Input
+                        onChange={handlePasswordChange}
+                        onKeyDown={handleOnKeyDown}
+                        ref={passwordRef}
+                        type="password"
+                        label="비밀번호"
+                        helperText={checkMessage.password[check.password ?? 0] ?? ''}
+                    />
+                </Box>
             </Stack>
-        </AppScreen>
+            <Button onClick={submit}>로그인</Button>
+        </Stack>
     );
 };
