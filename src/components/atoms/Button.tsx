@@ -4,8 +4,9 @@ import { Button as MuiButton } from '@mui/material';
 const style = {
     button: {
         color: '#fff',
-        backgroundColor: 'gray',
-        borderRadius: '5px',
+        backgroundColor: 'lightgray',
+        borderRadius: '15px',
+        height: '60px',
     },
 } as const;
 

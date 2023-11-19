@@ -10,32 +10,20 @@ interface Props {
     value?: unknown;
     defaultValue?: unknown;
     multiline?: boolean;
-    border?: boolean;
     maxLength?: number;
     onKeyDown?: (event: KeyboardEvent<HTMLInputElement>) => void;
 }
 
 export const Input = forwardRef(
     (
-        {
-            type = 'text',
-            id,
-            label,
-            helperText,
-            onChange,
-            onKeyDown,
-            value,
-            defaultValue,
-            multiline,
-            border,
-            maxLength,
-        }: Props,
+        { type = 'text', id, label, helperText, onChange, onKeyDown, value, defaultValue, multiline, maxLength }: Props,
         ref,
     ) => {
         const style = {
             input: {
                 '& .MuiInputBase-root': {
-                    borderRadius: border ? '5px' : '35px',
+                    borderRadius: '15px',
+                    backgroundColor: '#f5f5f5',
                     '& textarea': {
                         height: multiline ? '170px !important' : '',
                     },
@@ -58,7 +46,7 @@ export const Input = forwardRef(
                     },
                 },
                 '& p': {
-                    color: '#BF4158',
+                    color: '#a6364b',
                 },
             },
         } as const;

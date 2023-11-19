@@ -15,7 +15,7 @@ interface Props {
 export const Logo: FC<Props> = ({ onClick }) => {
   return (
     <div style={style.logo} onClick={onClick}>
-      Love Commerce
+      Commerce
     </div>
   );
 };
