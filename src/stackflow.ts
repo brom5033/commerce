@@ -17,5 +17,5 @@ export const { Stack, useFlow } = stackflow({
         SignUp,
         Login,
     },
-    initialActivity: () => 'Login',
+    initialActivity: () => 'SignUp',
 });

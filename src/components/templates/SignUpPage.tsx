@@ -152,9 +152,20 @@ export const SignUpPage: FC = () => {
     };
 
     return (
-        <Stack>
-            <h3>Sign Up</h3>
+        <Stack
+            gap="50px"
+            sx={{
+                width: '100%',
+                maxWidth: '500px',
+                margin: 'auto',
+                top: '50%',
+                left: '50%',
+                position: 'absolute',
+                transform: 'translate(-50%, -50%)',
+            }}
+        >
             <Box>
+                <h3>Sign Up</h3>
                 <Input
                     ref={emailRef}
                     onChange={handleEmailChange}
