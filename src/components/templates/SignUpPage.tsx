@@ -141,14 +141,19 @@ export const SignUpPage: FC = () => {
 
         // 값이 입력되었을때 회원가입 진행
         if (email && password && name && phoneNumber && businessNumber) {
-            useSignUp(email, password, name, phoneNumber, businessNumber)
-                .then(() => {
-                    push('Main', {});
-                })
-                .catch((error) => {
-                    console.log(error);
-                });
+            useSignUp(email, password, name, phoneNumber, businessNumber).then(() => {
+                push('Login', {});
+            });
         }
+
+        setCheck({
+            ...check,
+            email: email ? null : 1,
+            password: password ? null : 1,
+            name: name ? null : 1,
+            phoneNumber: phoneNumber ? null : 1,
+            businessNumber: businessNumber ? null : 1,
+        });
     };
 
     return (
