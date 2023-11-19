@@ -31,6 +31,8 @@ export const SignUpPage: FC = () => {
     const emailRef = useRef<HTMLInputElement>();
     const passwordRef = useRef<HTMLInputElement>();
     const nameCheckRef = useRef<HTMLInputElement>();
+    const phoneNumberRef = useRef<HTMLInputElement>();
+    const businessNumberRef = useRef<HTMLInputElement>();
 
     const checkObj: Check = {
         email: null,
@@ -81,7 +83,6 @@ export const SignUpPage: FC = () => {
     };
 
     const handleNameChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        
         const nameCheck = /^[가-힣]+$/;
         if (!nameCheck.test(event.target.value)) {
             checkObj.name = 1;
@@ -135,11 +136,12 @@ export const SignUpPage: FC = () => {
         const email = emailRef?.current?.value ?? '';
         const password = passwordRef?.current?.value ?? '';
         const name = nameCheckRef?.current?.value ?? '';
+        const phoneNumber = phoneNumberRef?.current?.value ?? '';
+        const businessNumber = businessNumberRef?.current?.value ?? '';
 
         // 값이 입력되었을때 회원가입 진행
-        if (email && password && name) {
-            console.log('sign up success');
-            useSignUp(email, password, name)
+        if (email && password && name && phoneNumber && businessNumber) {
+            useSignUp(email, password, name, phoneNumber, businessNumber)
                 .then(() => {
                     push('Main', {});
                 })
@@ -152,7 +154,7 @@ export const SignUpPage: FC = () => {
     return (
         <Stack>
             <h3>Sign Up</h3>
-            <Box border>
+            <Box>
                 <Input
                     ref={emailRef}
                     onChange={handleEmailChange}
@@ -181,12 +183,14 @@ export const SignUpPage: FC = () => {
                     helperText={checkMessage.name[check.name ?? 0] ?? ''}
                 />
                 <Input
+                    ref={phoneNumberRef}
                     onChange={handlePhoneNumberChange}
                     type="tel"
                     label="전화번호"
                     helperText={checkMessage.phoneNumber[check.phoneNumber ?? 0] ?? ''}
                 />
                 <Input
+                    ref={businessNumberRef}
                     onChange={handleBusinessNumberChange}
                     type="tel"
                     label="사업자번호"
