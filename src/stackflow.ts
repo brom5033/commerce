@@ -2,7 +2,7 @@ import { stackflow } from '@stackflow/react';
 import { basicRendererPlugin } from '@stackflow/plugin-renderer-basic';
 import { basicUIPlugin } from '@stackflow/plugin-basic-ui';
 // Activity
-import { Main, SignUp } from '@activities/index';
+import { Main, SignUp, Login } from '@activities/index';
 
 export const { Stack, useFlow } = stackflow({
     transitionDuration: 350,
@@ -15,6 +15,7 @@ export const { Stack, useFlow } = stackflow({
     activities: {
         Main,
         SignUp,
+        Login,
     },
-    initialActivity: () => 'SignUp',
+    initialActivity: () => 'Login',
 });

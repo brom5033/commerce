@@ -1,4 +1,4 @@
-import { CheckMessage } from '@components/templates/SignUp';
+import { CheckMessage } from '@components/templates/SignUpPage';
 
 export const checkMessage: CheckMessage = {
     email: {

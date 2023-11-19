@@ -2,12 +2,12 @@ import type { ActivityComponentType } from '@stackflow/react';
 
 // component
 import { AppScreen } from '@components/organisms';
-import { MainPage } from '@components/templates';
+import { LoginPage } from '@components/templates';
 
-export const Main: ActivityComponentType = () => {
+export const Login: ActivityComponentType = () => {
     return (
         <AppScreen main>
-            <MainPage />
+            <LoginPage />
         </AppScreen>
     );
 };

@@ -2,9 +2,9 @@ import { type FC, type ChangeEvent, useState, useRef } from 'react';
 import { Stack } from '@mui/material';
 import { useFlow } from 'stackflow';
 // component
-import { Box, Input, Button } from '@components/atoms/';
-import { checkMessage } from '@constants/checkMessage';
-import { useSignUp } from '@components/api/useSignUp';
+import { Box, Input, Button } from '@components/atoms';
+import { checkMessage } from '@constants/index';
+import { useSignUp } from '@hooks/api';
 
 type CheckType = null | 1 | 2 | 3 | 4 | 5 | 6;
 type Check = Record<string, CheckType>;
@@ -17,7 +17,7 @@ export interface CheckMessage {
     businessNumber: Record<number, string>;
 }
 
-export const SignUpTemplate: FC = () => {
+export const SignUpPage: FC = () => {
     const [check, setCheck] = useState<Check>({
         email: null,
         password: null,

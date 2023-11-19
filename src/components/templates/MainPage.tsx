@@ -1,9 +1,8 @@
-import type{FC} from 'react';
+import type { FC } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper/modules';
 
-
-export const MainTemplate : FC = () => {
+export const MainPage: FC = () => {
     return (
         <Swiper
             style={{ height: '400px', width: '300px' }}
