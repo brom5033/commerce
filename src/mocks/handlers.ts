@@ -12,15 +12,16 @@ export const handlers = [
         await sleep(200);
 
         const user = await request.json();
-        const { username, password } = user as DefaultBodyType & { username: string; password: string };
+        const { email, password } = user as DefaultBodyType & { email: string; password: string };
 
-        if (username !== 'admin' || password !== 'admin') {
+        if (email !== 'admin@gmail.com' || password !== 'Aa123123!') {
             return HttpResponse.json(
                 {
                     message: '로그인 실패',
                     data: {
-                        username: '',
-                        nickname: '',
+                        email: '',
+                        password:'',
+                        name: '',
                         profileImage: '',
                         token: '',
                     },
@@ -32,8 +33,9 @@ export const handlers = [
         return HttpResponse.json({
             message: '로그인 성공',
             data: {
-                username: 'admin',
-                nickname: '관리자',
+                email: 'admin@gmail.com',
+                password:'Aa123123!',
+                name: '관리자',
                 profileImage: 'https://avatars.githubusercontent.com/u/18197734?v=4',
                 token,
             },
