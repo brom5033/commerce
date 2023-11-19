@@ -62,7 +62,7 @@ export const LoginPage: FC = () => {
                 replace('Main', {});
             })
             .catch(() => {
-                setCheck({ ...check, email: 1, password: 1 });
+                setCheck({ ...check, email: email ? 2 : 1, password: password ? 4 : 1 });
             });
     };
 
