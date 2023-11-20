@@ -1,8 +1,10 @@
 import { type FC, useState, useEffect, useRef, type ChangeEvent } from 'react';
 import { Stack, Grid } from '@mui/material';
+import { useFlow } from 'stackflow';
 // component
 import { useCatalogue, type Catalogue } from '@hooks/api';
 import { Card } from '@components/molecules/Card';
+import { userModel } from '@stores/index';
 
 interface Filters {
     category: string;
@@ -13,6 +15,8 @@ interface Filters {
 }
 
 export const CataloguePage: FC = () => {
+    const userModelStore = userModel();
+
     const [products, setProducts] = useState<Catalogue[] | []>([]);
     const [filters, setFilters] = useState<Filters>({
         category: '',
@@ -94,6 +98,12 @@ export const CataloguePage: FC = () => {
         setProducts(filteredProducts);
     };
 
+    const { push } = useFlow();
+
+    const handleDetailNavigation = (data: Catalogue) => () => {
+        push('Detail', { data: JSON.stringify(data) });
+    };
+
     return (
         <Stack>
             <select name="category" onChange={handleInputChange}>
@@ -129,14 +139,14 @@ export const CataloguePage: FC = () => {
             <Grid container>
                 {products.slice(20 * page, 20 * (page + 1)).map((item) => {
                     return (
-                        <Grid item xs={3} key={item._id}>
+                        <Grid item xs={3} key={item._id} onClick={handleDetailNavigation(item)}>
                             <div>
                                 <Card src={item.images[0]} alt={item.product_name}>
                                     <h2>{item.product_name}</h2>
                                     <p>category : {item.category}</p>
                                     <p>grade : {item.grade}</p>
                                     <p>room-type : {item.room_type}</p>
-                                    <p>$ {item.price}</p>
+                                    {userModelStore.isLogin() ? <p>$ {item.price}</p> : ''}
                                 </Card>
                             </div>
                         </Grid>
