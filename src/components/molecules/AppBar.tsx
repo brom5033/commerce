@@ -24,6 +24,8 @@ export const AppBar: FC = () => {
             top: '14px',
             left: '12px',
         },
+        loginP: { pl: '24px', pr: '24px', pt: '8px', pb: '8px' },
+        logo: { cursor: 'pointer', fontWeight: 'bold', margin: 'auto' },
     } as const;
 
     const { push } = useFlow();
@@ -38,11 +40,11 @@ export const AppBar: FC = () => {
                 <Grid item sx={{ position: 'absolute', left: '1px' }}>
                     <DrawerAppBar />
                 </Grid>
-                <Grid item sx={{ cursor: 'pointer', fontWeight: 'bold', margin: 'auto' }}>
+                <Grid item sx={style.logo}>
                     <Logo onClick={MainPageNavigation} />
                 </Grid>
                 <Grid item sx={{ position: 'absolute', right: '1px' }}>
-                    <Stack direction="row" spacing={1} sx={{ pl: '24px', pr: '24px', pt: '8px', pb: '8px' }}>
+                    <Stack direction="row" spacing={1} sx={style.loginP}>
                         {userModelStore.isLogin() ? (
                             <div>
                                 <Avatar alt="profile" src="/images/dog.jpg" sx={{ width: 24, height: 24 }} />
@@ -50,8 +52,12 @@ export const AppBar: FC = () => {
                             </div>
                         ) : (
                             <div>
-                                <Button onClick={LoginPageNavigation}>로그인</Button>
-                                <Button onClick={SignUpPageNavigation}>회원가입</Button>
+                                <Button height onClick={LoginPageNavigation}>
+                                    로그인
+                                </Button>
+                                <Button height onClick={SignUpPageNavigation}>
+                                    회원가입
+                                </Button>
                             </div>
                         )}
                     </Stack>
