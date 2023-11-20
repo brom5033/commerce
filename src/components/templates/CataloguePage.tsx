@@ -2,6 +2,7 @@ import { type FC, useState, useEffect, useRef, type ChangeEvent } from 'react';
 import { Stack } from '@mui/material';
 // component
 import { useCatalogue, type Catalogue } from '@hooks/api';
+import { Card } from '@components/molecules/Card';
 
 interface Filters {
     category: string;
@@ -123,6 +124,14 @@ export const CataloguePage: FC = () => {
             </div>
 
             <button onClick={applyFilters}>필터 적용</button>
+
+            <Card src='#' alt='#'>
+                <h2>dffdf</h2>
+                <p>dfsdf</p>
+                <p>dfsdf</p>
+                <p>dfsdf</p>
+                <p>dfsdf</p>
+            </Card>
 
             {products.map((item) => {
                 return (
