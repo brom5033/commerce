@@ -3,8 +3,9 @@ import { Stack, Grid } from '@mui/material';
 import { useFlow } from 'stackflow';
 // component
 import { useCatalogue, type Catalogue } from '@hooks/api';
-import { Card } from '@components/molecules/Card';
+import { Card } from '@components/molecules';
 import { userModel } from '@stores/index';
+import { colorPalette } from '@constants/index';
 
 interface Filters {
     category: string;
@@ -155,13 +156,21 @@ export const CataloguePage: FC = () => {
                     );
                 })}
             </Grid>
-            <div>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '24px' }}>
                 {Array.from(Array(Math.ceil(products.length / 20)).keys()).map((num) => {
                     return (
                         <button
                             key={num + 1}
                             onClick={() => setPage(num)}
-                            style={{ backgroundColor: num === page ? 'blue' : 'white' }}
+                            style={{
+                                color: 'gray',
+                                backgroundColor: num === page ? colorPalette.secondary : 'white',
+                                width: '50px',
+                                height: '40px',
+                                margin: '0 4px',
+                                border: '2px solid lightgray',
+                                borderRadius: '5px',
+                            }}
                         >
                             {num + 1}
                         </button>
