@@ -9,9 +9,9 @@ interface Props extends PropsWithChildren {
 
 export const Card: FC<Props> = ({ onClick, children, src, alt }) => {
     return (
-        <MUICard sx={{ maxWidth: '200px' }} onClick={onClick}>
+        <MUICard sx={{ maxWidth: '250px' }} onClick={onClick}>
             <CardMedia component="img" src={src} alt={alt} />
-            <CardContent sx={{ lineHeight: '8px' }}>{children}</CardContent>
+            <CardContent >{children}</CardContent>
         </MUICard>
     );
 };

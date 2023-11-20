@@ -1,5 +1,5 @@
 import { type FC, useState, useEffect, useRef, type ChangeEvent } from 'react';
-import { Stack } from '@mui/material';
+import { Stack, Grid } from '@mui/material';
 // component
 import { useCatalogue, type Catalogue } from '@hooks/api';
 import { Card } from '@components/molecules/Card';
@@ -124,22 +124,23 @@ export const CataloguePage: FC = () => {
             </div>
 
             <button onClick={applyFilters}>필터 적용</button>
-
-            <Card src='#' alt='#'>
-                <h2>dffdf</h2>
-                <p>dfsdf</p>
-                <p>dfsdf</p>
-                <p>dfsdf</p>
-                <p>dfsdf</p>
-            </Card>
-
-            {products.map((item) => {
-                return (
-                    <div key={item._id}>
-                        {item.product_name}/{item.category}/{item.grade}/{item.room_type}/{item.price}
-                    </div>
-                );
-            })}
+            <Grid container gap='36px'>
+                {products.map((item) => {
+                    return (
+                        <Grid item>
+                            <div key={item._id}>
+                                <Card src={item.images[0]} alt="#">
+                                    <h2>{item.product_name}</h2>
+                                    <p>{item.category}</p>
+                                    <p>{item.grade}</p>
+                                    <p>{item.room_type}</p>
+                                    <p>{item.price}</p>
+                                </Card>
+                            </div>
+                        </Grid>
+                    );
+                })}
+            </Grid>
         </Stack>
     );
 };
