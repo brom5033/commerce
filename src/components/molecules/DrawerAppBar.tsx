@@ -2,7 +2,8 @@ import { type FC, useState } from 'react';
 import { Box, Divider, Drawer, IconButton, List, ListItem, ListItemButton, ListItemText, Toolbar } from '@mui/material';
 import { Menu } from '@mui/icons-material';
 // component
-import { menuList } from '@constants/index';
+import { colorPalette } from '@constants/index';
+import { userModel } from '@stores/index';
 
 interface Props {
     window?: () => Window;
@@ -13,11 +14,17 @@ const drawerWidth = 300;
 export const DrawerAppBar: FC<Props> = ({ window }) => {
     const [open, setOpen] = useState(false);
 
+    const userModelStore = userModel();
+
     const handleDrawerToggle = () => {
         setOpen((prevState) => !prevState);
     };
 
     const container = window !== undefined ? () => window().document.body : undefined;
+
+    const handleLogoutClick = () => {
+        userModelStore.emptyUser();
+    };
 
     return (
         <>
@@ -49,13 +56,20 @@ export const DrawerAppBar: FC<Props> = ({ window }) => {
                     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
                         <Divider />
                         <List>
-                            {menuList.map(({ menuName, src }) => (
-                                <ListItem key={menuName} disablePadding component="a" href={src} target="_blank">
-                                    <ListItemButton sx={{ textAlign: 'center', color: 'black' }}>
-                                        <ListItemText primary={menuName} />
-                                    </ListItemButton>
-                                </ListItem>
-                            ))}
+                            <ListItem disablePadding component="div">
+                                <ListItemButton sx={{ textAlign: 'center', color: 'black' }}>
+                                    <ListItemText>카탈로그</ListItemText>
+                                </ListItemButton>
+                            </ListItem>
+
+                            <ListItem disablePadding component="div">
+                                <ListItemButton
+                                    sx={{ textAlign: 'center', color: 'white', backgroundColor: colorPalette.warning }}
+                                    onClick={handleLogoutClick}
+                                >
+                                    <ListItemText>로그아웃</ListItemText>
+                                </ListItemButton>
+                            </ListItem>
                         </List>
                     </Box>
                 </Drawer>

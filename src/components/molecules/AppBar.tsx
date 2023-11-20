@@ -1,4 +1,4 @@
-import { type FC } from 'react';
+import type { FC } from 'react';
 import { useFlow } from 'stackflow';
 import { Container, Grid, Avatar, Typography, Stack } from '@mui/material';
 // component
@@ -8,7 +8,6 @@ import { userModel } from '@stores/index';
 
 export const AppBar: FC = () => {
     const userModelStore = userModel();
-
 
     const style = {
         header: {

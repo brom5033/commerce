@@ -1,2 +1,2 @@
-export * from './menuList';
 export * from './checkMessage';
+export * from './colorPalette';
