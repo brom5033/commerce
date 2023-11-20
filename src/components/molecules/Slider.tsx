@@ -15,11 +15,16 @@ const style = {
     },
 } as const;
 
-export const Slider: FC<PropsWithChildren> = ({ children }) => {
+interface Props extends PropsWithChildren {
+    width?: boolean;
+    height?: boolean;
+}
+
+export const Slider: FC<Props> = ({ children, width }) => {
     return (
         <Stack sx={style.stackWrap}>
             <Swiper
-                style={{ height: '400px', width: '300px' }}
+                style={{ height: '400px', width: width ? '600px' : '300px' }}
                 slidesPerView={1}
                 spaceBetween={20}
                 modules={[Pagination, Autoplay]}
