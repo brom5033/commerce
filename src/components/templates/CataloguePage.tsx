@@ -101,7 +101,9 @@ export const CataloguePage: FC = () => {
     const { push } = useFlow();
 
     const handleDetailNavigation = (data: Catalogue) => () => {
-        push('Detail', { data: JSON.stringify(data) });
+        {
+            userModelStore.isLogin() ? push('Detail', { data: JSON.stringify(data) }) : push('Login', {});
+        }
     };
 
     return (
@@ -156,7 +158,11 @@ export const CataloguePage: FC = () => {
             <div>
                 {Array.from(Array(Math.ceil(products.length / 20)).keys()).map((num) => {
                     return (
-                        <button key={num + 1} onClick={() => setPage(num)}>
+                        <button
+                            key={num + 1}
+                            onClick={() => setPage(num)}
+                            style={{ backgroundColor: num === page ? 'blue' : 'white' }}
+                        >
                             {num + 1}
                         </button>
                     );
