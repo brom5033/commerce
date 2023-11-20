@@ -133,10 +133,10 @@ export const CataloguePage: FC = () => {
                             <div>
                                 <Card src={item.images[0]} alt={item.product_name}>
                                     <h2>{item.product_name}</h2>
-                                    <p>{item.category}</p>
-                                    <p>{item.grade}</p>
-                                    <p>{item.room_type}</p>
-                                    <p>{item.price}</p>
+                                    <p>category : {item.category}</p>
+                                    <p>grade : {item.grade}</p>
+                                    <p>room-type : {item.room_type}</p>
+                                    <p>$ {item.price}</p>
                                 </Card>
                             </div>
                         </Grid>

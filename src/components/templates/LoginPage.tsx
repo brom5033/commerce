@@ -6,6 +6,7 @@ import { useFlow } from 'stackflow';
 import { Box, Input, Button } from '@components/atoms';
 import { useLogin } from '@hooks/api';
 import { checkMessage } from '@constants/index';
+import { userModel } from '@stores/index';
 
 type CheckType = null | 1 | 2 | 3 | 4 | 5 | 6;
 type Check = Record<string, CheckType>;
@@ -16,6 +17,8 @@ export const LoginPage: FC = () => {
         email: null,
         password: null,
     });
+
+    const userModelStore = userModel();
 
     const checkObj: Check = {
         email: null,
@@ -58,7 +61,9 @@ export const LoginPage: FC = () => {
         const password = passwordRef?.current?.value ?? '';
 
         useLogin(email, password)
-            .then(() => {
+            .then(({data}) => {
+                const {data : {email, name, profileImage, token}} = data;
+                userModelStore.setUser(email, name, profileImage, token);
                 replace('Main', {});
             })
             .catch(() => {

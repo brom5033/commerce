@@ -34,7 +34,6 @@ export const handlers = [
             message: '로그인 성공',
             data: {
                 email: 'admin@gmail.com',
-                password:'Aa123123!',
                 name: '관리자',
                 profileImage: 'https://avatars.githubusercontent.com/u/18197734?v=4',
                 token,
