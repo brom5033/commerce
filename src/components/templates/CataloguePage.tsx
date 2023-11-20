@@ -4,6 +4,7 @@ import { useFlow } from 'stackflow';
 // component
 import { useCatalogue, type Catalogue } from '@hooks/api';
 import { Card } from '@components/molecules';
+import { Button } from '@components/atoms';
 import { userModel } from '@stores/index';
 import { colorPalette } from '@constants/index';
 
@@ -108,37 +109,77 @@ export const CataloguePage: FC = () => {
     };
 
     return (
-        <Stack>
-            <select name="category" onChange={handleInputChange}>
-                <option value="">카테고리 선택</option>
-                {categoryList.map((category) => (
-                    <option key={category} value={category}>
-                        {category}
-                    </option>
-                ))}
-            </select>
-            <input type="number" name="minPrice" placeholder="최소 가격" onChange={handleInputChange} />
-            <input type="number" name="maxPrice" placeholder="최대 가격" onChange={handleInputChange} />
+        <Stack sx={{mt:'80px'}}>
+            <div style={{display:'flex'}}>
+                <select
+                    name="category"
+                    onChange={handleInputChange}
+                    style={{ height: '50px', width: '120px', borderRadius: '5px' }}
+                >
+                    <option value="">카테고리 선택</option>
+                    {categoryList.map((category) => (
+                        <option key={category} value={category} style={{ fontSize: '16px' }}>
+                            {category}
+                        </option>
+                    ))}
+                </select>
 
-            <div>
-                {roomTypeList.map((roomType) => (
-                    <label key={roomType}>
-                        <input type="checkbox" name="roomTypes" value={roomType} onChange={handleCheckboxChange} />
-                        {roomType}
-                    </label>
-                ))}
+                <div
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        margin: 'auto',
+                        border: '1px solid lightgray',
+                        height: '40px',
+                        alignItems: 'center',
+                        width: '600px',
+                        borderRadius: '15px',
+                    }}
+                >
+                    <div style={{ margin: 'auto' }}>
+                        <input type="number" name="minPrice" placeholder="최소 가격" onChange={handleInputChange} />
+                    </div>
+                    <p>-</p>
+                    <div style={{ margin: 'auto' }}>
+                        <input type="number" name="maxPrice" placeholder="최대 가격" onChange={handleInputChange} />
+                    </div>
+                </div>
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'space-around', margin: '12px' }}>
+                <div
+                    style={{
+                        textAlign: 'center',
+                        width: '500px',
+                        border: '1px solid lightgray',
+                        borderRadius: '15px',
+                    }}
+                >
+                    {roomTypeList.map((roomType) => (
+                        <label key={roomType}>
+                            <input type="checkbox" name="roomTypes" value={roomType} onChange={handleCheckboxChange} />
+                            {roomType}
+                        </label>
+                    ))}
+                </div>
+
+                <div
+                    style={{
+                        textAlign: 'center',
+                        width: '500px',
+                        border: '1px solid lightgray',
+                        borderRadius: '15px',
+                    }}
+                >
+                    {gradeList.map((grade) => (
+                        <label key={grade}>
+                            <input type="checkbox" name="grades" value={grade} onChange={handleCheckboxChange} />
+                            {grade} 등급
+                        </label>
+                    ))}
+                </div>
             </div>
 
-            <div>
-                {gradeList.map((grade) => (
-                    <label key={grade}>
-                        <input type="checkbox" name="grades" value={grade} onChange={handleCheckboxChange} />
-                        {grade} 등급
-                    </label>
-                ))}
-            </div>
-
-            <button onClick={applyFilters}>필터 적용</button>
+            <Button onClick={applyFilters}>필터 적용</Button>
             <Grid container>
                 {products.slice(20 * page, 20 * (page + 1)).map((item) => {
                     return (
