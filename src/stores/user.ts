@@ -18,6 +18,7 @@ interface UserModel {
         token: User['token'],
     ) => void;
     emptyUser: () => void;
+    isLogin: () => boolean;
 }
 
 export const userModel = create<UserModel>()(
@@ -54,6 +55,10 @@ export const userModel = create<UserModel>()(
                         token: undefined,
                     },
                 }),
+                isLogin: () => {
+                    const { token } = get().data;
+                    return !!token;
+                }
         }),
         {
             name: 'store',

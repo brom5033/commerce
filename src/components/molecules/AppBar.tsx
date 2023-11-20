@@ -2,10 +2,14 @@ import { type FC } from 'react';
 import { useFlow } from 'stackflow';
 import { Container, Grid, Avatar, Typography, Stack } from '@mui/material';
 // component
-import { Logo } from '@components/atoms';
+import { Logo, Button } from '@components/atoms';
 import { DrawerAppBar } from '@components/molecules';
+import { userModel } from '@stores/index';
 
 export const AppBar: FC = () => {
+    const userModelStore = userModel();
+
+
     const style = {
         header: {
             color: '#353537',
@@ -26,6 +30,8 @@ export const AppBar: FC = () => {
     const { push } = useFlow();
 
     const MainPageNavigation = () => push('Main', {});
+    const LoginPageNavigation = () => push('Login', {});
+    const SignUpPageNavigation = () => push('SignUp', {});
 
     return (
         <Container disableGutters component="header" maxWidth={false} sx={style.header}>
@@ -38,8 +44,17 @@ export const AppBar: FC = () => {
                 </Grid>
                 <Grid item sx={{ position: 'absolute', right: '1px' }}>
                     <Stack direction="row" spacing={1} sx={{ pl: '24px', pr: '24px', pt: '8px', pb: '8px' }}>
-                        <Avatar alt="profile" src="/images/dog.jpg" sx={{ width: 24, height: 24 }} />
-                        <Typography sx={{ mt: '8px' }}>박민정</Typography>
+                        {userModelStore.isLogin() ? (
+                            <div>
+                                <Avatar alt="profile" src="/images/dog.jpg" sx={{ width: 24, height: 24 }} />
+                                <Typography sx={{ mt: '8px' }}>박민정</Typography>
+                            </div>
+                        ) : (
+                            <div>
+                                <Button onClick={LoginPageNavigation}>로그인</Button>
+                                <Button onClick={SignUpPageNavigation}>회원가입</Button>
+                            </div>
+                        )}
                     </Stack>
                 </Grid>
             </Grid>
