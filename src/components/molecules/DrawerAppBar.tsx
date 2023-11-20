@@ -1,6 +1,7 @@
 import { type FC, useState } from 'react';
 import { Box, Divider, Drawer, IconButton, List, ListItem, ListItemButton, ListItemText, Toolbar } from '@mui/material';
 import { Menu } from '@mui/icons-material';
+import { useFlow } from 'stackflow';
 // component
 import { colorPalette } from '@constants/index';
 import { userModel } from '@stores/index';
@@ -24,6 +25,12 @@ export const DrawerAppBar: FC<Props> = ({ window }) => {
 
     const handleLogoutClick = () => {
         userModelStore.emptyUser();
+    };
+
+    const { push } = useFlow();
+
+    const gotoCatalogue = () => {
+        push('Catalogue', {});
     };
 
     return (
@@ -57,7 +64,7 @@ export const DrawerAppBar: FC<Props> = ({ window }) => {
                         <Divider />
                         <List>
                             <ListItem disablePadding component="div">
-                                <ListItemButton sx={{ textAlign: 'center', color: 'black' }}>
+                                <ListItemButton sx={{ textAlign: 'center', color: 'black' }} onClick={gotoCatalogue}>
                                     <ListItemText>카탈로그</ListItemText>
                                 </ListItemButton>
                             </ListItem>
