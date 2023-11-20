@@ -25,6 +25,7 @@ export const CataloguePage: FC = () => {
     const [categoryList, setCategoryList] = useState<string[]>([]);
     const [roomTypeList, setRoomTypeList] = useState<string[]>([]);
     const [gradeList, setGradeList] = useState<string[]>([]);
+    const [page, setPage] = useState(0);
 
     useEffect(() => {
         useCatalogue().then(({ data }) => {
@@ -92,6 +93,7 @@ export const CataloguePage: FC = () => {
 
         setProducts(filteredProducts);
     };
+
     return (
         <Stack>
             <select name="category" onChange={handleInputChange}>
@@ -124,12 +126,12 @@ export const CataloguePage: FC = () => {
             </div>
 
             <button onClick={applyFilters}>필터 적용</button>
-            <Grid container gap='36px'>
-                {products.map((item) => {
+            <Grid container>
+                {products.slice(20 * page, 20 * (page + 1)).map((item) => {
                     return (
-                        <Grid item>
-                            <div key={item._id}>
-                                <Card src={item.images[0]} alt="#">
+                        <Grid item xs={3} key={item._id}>
+                            <div>
+                                <Card src={item.images[0]} alt={item.product_name}>
                                     <h2>{item.product_name}</h2>
                                     <p>{item.category}</p>
                                     <p>{item.grade}</p>
@@ -141,6 +143,15 @@ export const CataloguePage: FC = () => {
                     );
                 })}
             </Grid>
+            <div>
+                {Array.from(Array(Math.ceil(products.length / 20)).keys()).map((num) => {
+                    return (
+                        <button key={num + 1} onClick={() => setPage(num)}>
+                            {num + 1}
+                        </button>
+                    );
+                })}
+            </div>
         </Stack>
     );
 };
