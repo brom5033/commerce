@@ -109,8 +109,8 @@ export const CataloguePage: FC = () => {
     };
 
     return (
-        <Stack sx={{mt:'80px'}}>
-            <div style={{display:'flex'}}>
+        <Stack sx={{ mt: '80px' }}>
+            <div style={{ display: 'flex' }}>
                 <select
                     name="category"
                     onChange={handleInputChange}
